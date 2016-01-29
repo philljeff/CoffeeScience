@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 
+
 namespace CoffeeScience.Controllers
 {
     public class HomeController : Controller
@@ -15,7 +16,9 @@ namespace CoffeeScience.Controllers
 
         public IActionResult Shop()
         {
-            ViewData["Message"] = "Shopping page.";
+            Mappath  mpath = new Mappath();
+            const string sourcepath = mpath.Thepath;
+            ViewData["Message"] = "Shopping page. " + sourcepath;
 
             return View();
         }
