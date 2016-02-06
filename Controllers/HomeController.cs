@@ -16,9 +16,7 @@ namespace CoffeeScience.Controllers
 
         public IActionResult Shop()
         {
-            Mappath  mpath = new Mappath();
-            const string sourcepath = mpath.Thepath;
-            ViewData["Message"] = "Shopping page. " + sourcepath;
+            ViewData["Message"] = "Shopping page. ";
 
             return View();
         }

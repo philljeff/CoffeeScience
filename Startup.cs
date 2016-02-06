@@ -10,6 +10,8 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNet.Session;
+using Microsoft.Extensions.Caching.Memory;
 using CoffeeScience.Models;
 using CoffeeScience.Services;
 
@@ -59,7 +61,11 @@ namespace CoffeeScience
             
             // Add sessions
             services.AddCaching();
-            services.AddSession();
+            services.AddSession(options =>
+            {
+                   options.CookieName = ".CoffeeScience.Session";
+                   options.IdleTimeout = TimeSpan.FromSeconds(10);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
